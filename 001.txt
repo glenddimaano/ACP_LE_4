@@ -1,0 +1,9 @@
+Student No.: 001
+Last Name: Dimaano
+First Name: Glend
+Middle Initial: G
+Program: BSIT
+Age: 20
+Gender: Male
+Birthday: 09/30/2005
+Contact No.: 09776260601
