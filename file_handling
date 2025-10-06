@@ -1,0 +1,72 @@
+import os
+
+doc_path = os.path.expanduser("~/Documents")
+
+def register_student():
+    print("\n=== Register Student ===")
+    student_no = input("Student No.: ")
+    last_name = input("Last Name: ")
+    first_name = input("First Name: ")
+    middle_initial = input("Middle Initial: ")
+    program = input("Program: ")
+    age = input("Age: ")
+    gender = input("Gender: ")
+    birthday = input("Birthday: ")
+    contact_no = input("Contact No.: ")
+
+    data = [
+        f"Student No.: {student_no}",
+        f"Last Name: {last_name}",
+        f"First Name: {first_name}",
+        f"Middle Initial: {middle_initial}",
+        f"Program: {program}",
+        f"Age: {age}",
+        f"Gender: {gender}",
+        f"Birthday: {birthday}",
+        f"Contact No.: {contact_no}"
+    ]
+
+    filename = os.path.join(doc_path, student_no + ".txt")
+    with open(filename, "w") as f:
+        for line in data:
+            f.write(line + "\n")
+
+    print(f"\n✔ Student record saved as {filename}")
+
+
+def open_student_record():
+    print("\n=== Open Student Record ===")
+    student_no = input("Enter Student No.: ")
+    filename = os.path.join(doc_path, student_no + ".txt")
+
+    try:
+        with open(filename, "r") as f:
+            print("\n--- Student Record ---")
+            for line in f:
+                print(line.strip())
+    except FileNotFoundError:
+        print("✘ Student record not found.")
+
+
+def main():
+    while True:
+        print("\n===== Student Records Menu =====")
+        print("1. Register Student")
+        print("2. Open Student Record")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            register_student()
+        elif choice == "2":
+            open_student_record()
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice, try again.")
+
+
+if __name__ == "__main__":
+    main()
